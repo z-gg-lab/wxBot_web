@@ -94,12 +94,18 @@ class myThread (threading.Thread):   #继承父类threading.Thread
 
 
 def run4web():
+    '''
+    # web.py-0.21
     web.run(urls, globals())
-
-
+    '''
+    app.run()
+    
 urls = (
     '/(.*)', 'WXBot'
 )
+
+app = web.application(urls, globals())
+
 
 class WXBot:
     """WXBot功能类"""
@@ -115,7 +121,11 @@ class WXBot:
         
         str = 'https://login.weixin.qq.com/qrcode/%s?t=webwx"/>' % self.uuid.get('uuid')# @ReservedAssignment
         
+        '''
+        # web.py-0.21
         print render.index(str)
+        '''
+        return render.index(str)
         
     def __init__(self):
         self.DEBUG = False
